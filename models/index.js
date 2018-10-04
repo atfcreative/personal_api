@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
-mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/personal-api", {useMongoClient: true});
+mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/api", {useMongoClient: true});
 
-// module.exports.Campsite = require("./campsite.js.example");
+module.exports = require("./volunteer");
+module.exports = require("./art");
+module.exports = require("./design");
