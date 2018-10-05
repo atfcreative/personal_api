@@ -29,6 +29,42 @@ app.use(function(req, res, next) {
 // i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static('public'));
 
+
+// //DATA //////
+
+var art = [
+  {
+    title: "Untitled1",
+      type: "Mixed Media",
+      description: "32 x 32 on wood",
+      image: "../images/somepath1.jpg"
+  },
+  {
+    title: "Untitled2",
+      type: "Acrylic",
+      description: "40 x 40 on canvas",
+      image: "../images/somepath2.jpg"
+  },
+  {
+    title: "Untitled3",
+      type: "Grpahite",
+      description: "50 x 50 on paper",
+      image: "../images/somepath3.jpg"
+  },
+  {
+    title: "Untitled4",
+      type: "Pen & Ink",
+      description: "60 x 60 on mulberry",
+      image: "../images/somepath4.jpg"
+  },
+  {
+    title: "Untitled5",
+      type: "Water Color",
+      description: "70 x 70 on Strathmore",
+      image: "../images/somepath5.jpg"
+  },
+];
+
 /*
  * HTML Endpoints
  */
@@ -37,17 +73,23 @@ app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-
 /*
  * JSON API Endpoints
  */
 
+//ROUTES 
+// get all 
+app.get('/api/art', (req, res) => {
+    //send all art as json response
+    console.log("art index");
+    res.json( art )
+});
+
 app.get('/api', (req, res) => {
-  // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
-  res.json({ './index.js')
+    res.json({
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/atfcreative/personal_api/blob/master/README.md", // CHANGE ME
-    baseUrl: "https://whispering-atoll-59230.herokuapp.com/", // CHANGE ME
+    documentationUrl: "https://github.com/atfcreative/personal_api/blob/master/README.md",
+    baseUrl: "https://whispering-atoll-59230.herokuapp.com/",
     endpoints: [
       {
         method: "GET",
@@ -62,12 +104,13 @@ app.get('/api', (req, res) => {
       {
         method: "POST", 
         path: "/api/design", 
-        description: "Some design projects"} 
+        description: "Some design projects"
+      }, 
       {
       method: "POST", 
       path: "/api/art", 
       description: "Some art projects"
-    } 
+    }
     ]
   })
 });

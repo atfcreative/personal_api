@@ -10,7 +10,7 @@ const VolunteerSchema = new Schema({
 
 const Volunteer = mongoose.model('Volunteer', VolunteerSchema);
 
-module.exports.Volunteer = require('./volunteer.js');
+module.exports = require('./volunteer.js');
 
 var volunteer_list = [
 	{	

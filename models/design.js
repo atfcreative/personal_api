@@ -10,7 +10,7 @@ const DesignSchema = new Schema({
 
 const Design = mongoose.model('Design', DesignSchema);
 
-module.exports.Design = require('./design.js');
+module.exports = require('./design.js');
 
 var design_list = [
 	{	
