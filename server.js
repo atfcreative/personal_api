@@ -1,11 +1,13 @@
 // require express and other modules
 const express = require('express');
 const app = express();
+// const port = process.env.port || 3000;
 
 // parse incoming urlencoded form data
 // and populate the req.body object
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
@@ -19,7 +21,7 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-const db = require('./models');
+const db = require('./models/index.js');
 
 /**********
  * ROUTES *
@@ -125,85 +127,127 @@ app.get('/api/volunteer', function (req, res) {
 
 //ROUTES ////////////////////////////////////////////
 
-app.get('/api', (req, res) => {
-    res.json({
-    message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/atfcreative/personal_api/blob/master/README.md",
-    baseUrl: "https://whispering-atoll-59230.herokuapp.com/",
-    endpoints: [
-      {
-        method: "GET",
-        path: "/api", 
-        description: "Describes all available endpoints"
-      },
-      // {
-      //   method: "GET",
-      //   path: "/api/volunteer", 
-      //   description: "Get volunteer projects"
-      // }, 
-      // {
-      //   method: "GET", 
-      //   path: "/api/design", 
-      //   description: "Get design projects"
-      // }, 
-      {
-      method: "GET", 
-      path: "/api/art", 
-      description: "Get art projects"
-    },
-    {
-      method: "POST", 
-      path: "/api/art", 
-      description: "Post art projects"
-    },
-    {
-      method: "PUT", 
-      path: "/api/art/:id", 
-      description: "Edit art projects"
-    },
-    {
-      method: "DELETE", 
-      path: "/api/art/:id", 
-      description: "Delete art projects"
-    },
-    ]
-  })
-});
+// app.get('/api', (req, res) => {
+//     res.json({
+//     message: "Welcome to my personal api! Here's what you need to know!",
+//     documentationUrl: "https://github.com/atfcreative/personal_api/blob/master/README.md",
+//     baseUrl: "https://whispering-atoll-59230.herokuapp.com/",
+//     endpoints: [
+//       {
+//         method: "GET",
+//         path: "/api", 
+//         description: "Describes all available endpoints"
+//       },
+//       // {
+//       //   method: "GET",
+//       //   path: "/api/volunteer", 
+//       //   description: "Get volunteer projects"
+//       // }, 
+//       // {
+//       //   method: "GET", 
+//       //   path: "/api/design", 
+//       //   description: "Get design projects"
+//       // }, 
+//       {
+//       method: "GET", 
+//       path: "/api/art", 
+//       description: "Get art projects"
+//     },
+//     {
+//       method: "POST", 
+//       path: "/api/art", 
+//       description: "Post art projects"
+//     },
+//     {
+//       method: "PUT", 
+//       path: "/api/art/:id", 
+//       description: "Edit art projects"
+//     },
+//     {
+//       method: "DELETE", 
+//       path: "/api/art/:id", 
+//       description: "Delete art projects"
+//     },
+//     ]
+//   })
+// });
 
-// get all art
+// // get all art
+// app.get('/api/art', (req, res) => {
+//     //send all art as json response
+//     console.log("art index");
+//     db.Art.find({}, (err, findArt) => 
+//       { if (err) throw err;
+//         res.json(findArt);
+//   });
+// });
+
+// //post all art
+// app.post('/api/art/:id', (req, res) => {
+//   const artId = req.params.id;
+//   const artData = req.body;
+//   console.log(`Andrew ID = ${artId} \n Andrew Data = ${artData}`)
+//   res.json(updatedArt);
+// })
+
+// //Update art - //find item by id 
+// app.put('/api/art/:id', (req, res) => {
+//   let update = req.body;
+//   db.Art.findByIdAndUpdate(req.params.id, update, { new:true }, (err, updateArt) => 
+//   { if(err) throw err;
+//     res.json(updateArt);})
+// });
+
+// //Art Destroy
+// app.delete('/api/art/:id', (req, res) => {
+//   db.Art.findByIdAndRemove(req.params.id, (err, deleteArt) => 
+//     {if (err) throw err;
+//       console.log(deleteArt);
+//   })
+// });
+
+
+// API ROUTES
+// Pet Index
 app.get('/api/art', (req, res) => {
-    //send all art as json response
-    console.log("art index");
-    db.Art.find({}, (err, findArt) => 
-      { if (err) throw err;
-        res.json( findArt );
+  db.Art.find((err, allArts) => {
+    if (err) throw err;
+    res.json(allArts);
   });
 });
 
-//post all art
-app.post(/api/)
+// Pet Create
+app.post('/api/art', (req, res) => {
+  db.Art.create(req.body, (err, newArt) => {
+    if (err) throw err;
+    res.json(newArt);
+  });
+});
 
- 
-//find item by id //Update one book
+// Pet Update
 app.put('/api/art/:id', (req, res) => {
-  let update = req.body;
-  db.Art.findByIdAndUpdate(req.params.id, update, { new:true }, (err, updateArt) => 
-  { if(err) throw err;
-    res.json(updateArt);})
+  const artId = req.params.id;
+  const artData = req.body;
+  console.log(`Pet ID = ${artId} \n Art Data = ${artData}`)
+  db.Art.findOneAndUpdate({_id: artId}, artData, {new: true}, (err, updatedArt) => {
+    res.json(updatedArt);
+  });
 });
 
+// Pet Destroy
 app.delete('/api/art/:id', (req, res) => {
-  db.Art.findByIdAndRemove(req.params.id, (err, deleteArt) => 
-    {if (err) throw err;
-      console.log(deleteArt);
-  })
+  const artId = req.params.id;
+
+  db.Art.findOneAndRemove({_id: artId}, (err, deletedArt) => {
+    if (err) throw err;
+    res.json(deletedArt);
+  });
 });
 
 
-
-/********** //////////////////////////////////////////////////////////////////////
- * SERVER *
- **********///////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//Server
+//////////////////////////////////////////////////////////////////////
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
 app.listen(process.env.PORT || 3000, () => {

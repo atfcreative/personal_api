@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+    <title>Personal API Stuff</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -12,25 +12,28 @@
 
     <!-- VENDOR SCRIPTS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-
-    <!-- APPLICATION SCRIPTS -->
-    <script src="/scripts/app.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
           <!-- Form For CRUD -->
-          <h1>Some personal Stuff</h1>
-              <form id="formAndrew" method="POST">
-                <input type="text" placeholder="name" name="name">
-                <input type="text" placeholder="quote" name="quote">
-                <button type="submit">Submit</button>
+            <h1>Some personal Stuff</h1>
+              <form id="andrewForm" class="andrew-form">
+                <input type="text" id="title" name="title" placeholder="Title" />
+                <input type="text" id="medium" name="medium" placeholder="Medium" />
+                <input type="text" id="description" name="description" placeholder="Description" />
+                <button id ="submit" type="submit" class="btn btn-primary">Submit</button>
               </form>
 
+              <div id="output" class="andrew-output">
+
           <!-- <h4><a href="/api">Read My API Documentation</a></h4> -->
-        </div>
-      </div>
-    </div>
+        </div><!-- close .col-md-8 -->
+      </div><!-- close .row -->
+    </div><!-- close .container -->
+
+    <!-- APPLICATION SCRIPTS -->
+    <script src="/scripts/app.js"></script>
   </body>
 </html>
