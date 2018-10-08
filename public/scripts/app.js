@@ -14,9 +14,10 @@ const render = (arts) => {
 	const art = arts.forEach(art => {
 		output.insertAdjacentHTML('afterbegin', `
 			<div style="margin:0 auto 40px">
-				<p><strong>${art.title}</strong></p>
+				<p class="bold">${art.title}</p>
 				<p><strong>${art.medium}</strong></p>
 				<p><strong>${art.description}</strong></p>
+				<img src="${art.image}"
 				<small id="${art._id}">Edit</small>
 				<small id="${art._id}">Delete</small>
 			</div>

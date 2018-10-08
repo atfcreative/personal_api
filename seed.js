@@ -5,39 +5,37 @@ const db = require('./models');
 
 // const Art = {description: "See some art stuff."};
 
-var art_list = [
+let art_list = [
 	{	
-		title: "Some Title 1",
+		title: "Abstract Lines",
 	  	medium: "Mixed Media",
 	  	description: "32 x 32 on wood",
-	  	// image: "../images/somepath1.jpg"
+	  	image: "/images/art1.jpg"
 	},
 	{
 		title: "Some Title 2",
 	  	medium: "Acrylic",
 	  	description: "40 x 40 on canvas",
-	  	// image: "../images/somepath2.jpg"
+	  	image: "./images/art1.jpg"
 	},
 	{
 		title: "Some Title 3",
 	  	medium: "Graphite",
 	  	description: "50 x 50 on paper",
-	  	// image: "../images/somepath3.jpg"
+	  	image: "images/art1.jpg"
 	},
 	{
 		title: "Some Title 4",
 	  	medium: "Pen & Ink",
 	  	description: "60 x 60 on mulberry",
-	  	// image: "../images/somepath4.jpg"
+	  	image: "/public/images/art1.jpg"
 	},
 	{
 		title: "Some Title 5",
 	  	medium: "Water Color",
 	  	description: "70 x 70 on Strathmore",
-	  	// image: "../images/somepath5.jpg"
+	  	image: "./public/images/art1.jpg"
 	},
-
-
 ];
 
 

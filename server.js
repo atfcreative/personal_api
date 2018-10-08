@@ -1,6 +1,7 @@
 // require express and other modules
 const express = require('express');
 const app = express();
+
 // const port = process.env.port || 3000;
 
 // parse incoming urlencoded form data
@@ -8,6 +9,10 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+
+//tell express how to use images
+app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/images'));
 
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
@@ -29,7 +34,9 @@ const db = require('./models/index.js');
 
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
+
 app.use(express.static('public'));
+app.use('/images', express.static(__dirname + '/public'));
 
 
 // //DATA //////
@@ -39,31 +46,31 @@ var design = [
       type: "web",
       date: "11/11/1101",
       client: "Anonymous",
-      image: "../images/somepath1.jpg",
+      image: "/images/art1.jpg",
   },
   { 
       type: "logo",
       date: "11/12/1101",
       client: "Anonymous",
-      image: "../images/somepath2.jpg",
+      image: "/images/art1.jpg",
   },
   { 
       type: "identity",
       date: "11/13/1101",
       client: "Anonymous",
-      image: "../images/somepath3.jpg",
+      image: "/images/art1.jpg",
   },
   { 
       type: "print",
       date: "11/14/1101",
       client: "Anonymous",
-      image: "../images/somepath4.jpg",
+      image: "/images/art1.jpg",
   },
   { 
       type: "package",
       date: "11/15/1101",
       client: "Anonymous",
-      image: "../images/somepath5.jpg",
+      image: "/images/art1.jpg",
   },
 ];
 
@@ -106,6 +113,10 @@ var volunteer = [
 
 app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
+});
+
+app.get('/images', function images(req, res) {
+  res.sendFile(__dirname + '/public/images');
 });
 
 /* /////////////////////////////////////////////////
@@ -208,7 +219,7 @@ app.get('/api/volunteer', function (req, res) {
 
 
 // API ROUTES
-// Pet Index
+// art get all da kine
 app.get('/api/art', (req, res) => {
   db.Art.find((err, allArts) => {
     if (err) throw err;
@@ -216,7 +227,7 @@ app.get('/api/art', (req, res) => {
   });
 });
 
-// Pet Create
+// Art can now be created
 app.post('/api/art', (req, res) => {
   db.Art.create(req.body, (err, newArt) => {
     if (err) throw err;
@@ -224,17 +235,17 @@ app.post('/api/art', (req, res) => {
   });
 });
 
-// Pet Update
+// Art can now be updated
 app.put('/api/art/:id', (req, res) => {
   const artId = req.params.id;
   const artData = req.body;
-  console.log(`Pet ID = ${artId} \n Art Data = ${artData}`)
+  console.log(`Art ID = ${artId} \n Art Data = ${artData}`)
   db.Art.findOneAndUpdate({_id: artId}, artData, {new: true}, (err, updatedArt) => {
     res.json(updatedArt);
   });
 });
 
-// Pet Destroy
+// Art can now be destroy
 app.delete('/api/art/:id', (req, res) => {
   const artId = req.params.id;
 

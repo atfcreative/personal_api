@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" type="image/ico" href="public/images/favicon.ico">
     <title>Personal API Stuff</title>
 
     <!-- STYLESHEETS -->
@@ -15,21 +15,31 @@
   </head>
   <body>
     <div class="container">
+      <h1>Personal API Stuff</h1>
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-6 left">
           <!-- Form For CRUD -->
-            <h1>Some personal Stuff</h1>
+            <div class="form-wrapper">
+            
               <form id="andrewForm" class="andrew-form">
                 <input type="text" id="title" name="title" placeholder="Title" />
                 <input type="text" id="medium" name="medium" placeholder="Medium" />
-                <input type="text" id="description" name="description" placeholder="Description" />
-                <button id ="submit" type="submit" class="btn btn-primary">Submit</button>
+                <input type="text" id="description" name="description" placeholder="Description" /><br/>
+                <button id ="submit" type="submit" class="btn btn-primary">Print Item</button>
               </form>
-
-              <div id="output" class="andrew-output">
-
-          <!-- <h4><a href="/api">Read My API Documentation</a></h4> -->
-        </div><!-- close .col-md-8 -->
+              <!-- <div id="three">
+                <button id="hammer" class="btn">First Cassette</button>
+                <div class="hide"></div>
+                <button id="nirvana" class="btn">First C.D.</button>
+                <div class="hide"></div>
+                <button id="turtle" class="btn">Favorite Turtle</button>
+                <div class="hide"></div> -->
+            </div><!-- close form-wraper -->
+<!-- <h4><a href="/api">Read My API Documentation</a></h4> -->
+        </div><!-- close .col-md-6 -->
+        <div class="col-md-6 right">
+         <div id="output" class="andrew-output">
+         </div>
       </div><!-- close .row -->
     </div><!-- close .container -->
 

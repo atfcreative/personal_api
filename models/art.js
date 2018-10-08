@@ -5,7 +5,7 @@ const ArtSchema = new Schema({
   title: String,
   medium: String,
   description: String,
-  image: String
+  imageURL: String
 });
 
 const Art = mongoose.model('Art', ArtSchema);
