@@ -5,6 +5,8 @@ const form = document.getElementById('andrewForm');
 const output = document.getElementById('output');
 const baseUrl = 'http://localhost:3000/api/art/';
 
+// const show = document.getElementById('blind');
+
 const render = (arts) => {
 	output.innerHTML = '';
 	form.children[0] = '';
@@ -13,11 +15,11 @@ const render = (arts) => {
 
 	const art = arts.forEach(art => {
 		output.insertAdjacentHTML('afterbegin', `
-			<div style="margin:0 auto 40px">
+			<div style="margin:0 auto 40px; border-top: 2px dashed #ccc;">
 				<p class="bold">${art.title}</p>
 				<p><strong>${art.medium}</strong></p>
 				<p><strong>${art.description}</strong></p>
-				<img src="${art.image}"
+				<img src="${art.image}" style="height:50%; width:50%; margin-left: 25%;">
 				<small id="${art._id}">Edit</small>
 				<small id="${art._id}">Delete</small>
 			</div>
@@ -74,7 +76,8 @@ const handleEditDelete = (event) => {
 		const artTitle = parent.children[0].innerText;
 		const artMedium = parent.children[1].innerText;
 		const artDescription = parent.children[2].innerText;
-		const artId = parent.children[3].id;
+		const artImage = parent.children[3].innerText;
+		const artId = parent.children[4].id;
 
 		parent.insertAdjacentHTML('beforeend', `
 				<span id="editArt">
@@ -108,9 +111,52 @@ const handleEditDelete = (event) => {
 	}
 }
 
+
 // EVENT LISTENERS
 form.addEventListener('submit', handleSubmit);
 output.addEventListener('click', handleEditDelete);
+
+//Toggle technique
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+
+//show element 
+var show = function (elem) {
+	elem.classList.add('is-visible');
+};
+
+//hide element 
+var hide = function (elem) {
+	elem.classList.remove('is-visible');
+};
+
+//toggle element vis
+var toggle = function (elem) {
+	elem.classList.toggle('is-visible');
+};
+
+//listen for click events
+document.addEventListener('click', function (event) {
+	
+	//make sure clilcked elem is our toggle 
+	if(!event.target.classList.contains('toggle')) return;
+	
+	//prevent default link beahvior
+	event.preventDefault();
+	
+	// get the content
+	var content = document.querySelector(event.target.hash);
+	if (!content) return;
+
+	toggle(content);
+}, false);
+
+
+
+
+
+// blind.addEventListener('click', showDiv);
+
 
 // $('formAndrew').on('submit', handleSuccess);
 

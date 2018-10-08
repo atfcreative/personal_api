@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/ico" href="public/images/favicon.ico">
+    <link rel="icon" type="image/ico" href="images/favicon.ico">
     <title>Personal API Stuff</title>
 
     <!-- STYLESHEETS -->
@@ -15,7 +15,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>Personal API Stuff</h1>
+      <h1>Personal API Stuff<span><img src="images/apple.png" alt="" style="margin-top:-20px;" /></span></h1>
       <div class="row">
         <div class="col-md-6 left">
           <!-- Form For CRUD -->
@@ -27,14 +27,29 @@
                 <input type="text" id="description" name="description" placeholder="Description" /><br/>
                 <button id ="submit" type="submit" class="btn btn-primary">Print Item</button>
               </form>
-              <!-- <div id="three">
-                <button id="hammer" class="btn">First Cassette</button>
-                <div class="hide"></div>
-                <button id="nirvana" class="btn">First C.D.</button>
-                <div class="hide"></div>
-                <button id="turtle" class="btn">Favorite Turtle</button>
-                <div class="hide"></div> -->
+
             </div><!-- close form-wraper -->
+            <div id="three" class="three">
+                
+                <a class="toggle btn btn-primary" href="#example">First Cassette Tape</a>
+                <a class="toggle btn btn-primary" href="#example2">First Compact Disk</a>
+                <a class="toggle btn btn-primary" href="#example3">Favorite Star Wars Episode</a>
+
+                <div id="example" class="toggle-content">
+                  <h2>Blind Melon- No Rain</h2>
+                  <img src="images/blindmelon.jpg" alt="" />
+                </div>
+                  
+                <div id="example2" class="toggle-content">
+                  <h2>Nirvana- Nevermind</h2>
+                  <img src="images/nirvana.jpg" alt="" />
+                </div>
+                
+                <div id="example3" class="toggle-content">
+                  <h2>Star Wars- Empire Strikes Back</h2>
+                  <img src="images/starwars.jpg" alt="" />
+                </div>
+              </div> 
 <!-- <h4><a href="/api">Read My API Documentation</a></h4> -->
         </div><!-- close .col-md-6 -->
         <div class="col-md-6 right">

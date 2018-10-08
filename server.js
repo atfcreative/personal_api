@@ -11,8 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 //tell express how to use images
-app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/public/images'));
+app.use(express.static(__dirname + 'public/images'))
 
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
@@ -34,9 +33,8 @@ const db = require('./models/index.js');
 
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
-
-app.use(express.static('public'));
-app.use('/images', express.static(__dirname + '/public'));
+// app.use(express.static(__dirname + '/public/images'));
+app.use(express.static(__dirname + '/public'));
 
 
 // //DATA //////
@@ -115,10 +113,6 @@ app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('/images', function images(req, res) {
-  res.sendFile(__dirname + '/public/images');
-});
-
 /* /////////////////////////////////////////////////
  * JSON API Endpoints
  */
@@ -138,50 +132,50 @@ app.get('/api/volunteer', function (req, res) {
 
 //ROUTES ////////////////////////////////////////////
 
-// app.get('/api', (req, res) => {
-//     res.json({
-//     message: "Welcome to my personal api! Here's what you need to know!",
-//     documentationUrl: "https://github.com/atfcreative/personal_api/blob/master/README.md",
-//     baseUrl: "https://whispering-atoll-59230.herokuapp.com/",
-//     endpoints: [
-//       {
-//         method: "GET",
-//         path: "/api", 
-//         description: "Describes all available endpoints"
-//       },
-//       // {
-//       //   method: "GET",
-//       //   path: "/api/volunteer", 
-//       //   description: "Get volunteer projects"
-//       // }, 
-//       // {
-//       //   method: "GET", 
-//       //   path: "/api/design", 
-//       //   description: "Get design projects"
-//       // }, 
-//       {
-//       method: "GET", 
-//       path: "/api/art", 
-//       description: "Get art projects"
-//     },
-//     {
-//       method: "POST", 
-//       path: "/api/art", 
-//       description: "Post art projects"
-//     },
-//     {
-//       method: "PUT", 
-//       path: "/api/art/:id", 
-//       description: "Edit art projects"
-//     },
-//     {
-//       method: "DELETE", 
-//       path: "/api/art/:id", 
-//       description: "Delete art projects"
-//     },
-//     ]
-//   })
-// });
+app.get('/api', (req, res) => {
+    res.json({
+    message: "Welcome to my personal api! Here's what you need to know!",
+    documentationUrl: "https://github.com/atfcreative/personal_api/blob/master/README.md",
+    baseUrl: "https://whispering-atoll-59230.herokuapp.com/",
+    endpoints: [
+      {
+        method: "GET",
+        path: "/api", 
+        description: "Describes all available endpoints"
+      },
+      {
+        method: "GET",
+        path: "/api/volunteer", 
+        description: "Get volunteer projects"
+      }, 
+      {
+        method: "GET", 
+        path: "/api/design", 
+        description: "Get design projects"
+      }, 
+      {
+      method: "GET", 
+      path: "/api/art", 
+      description: "Get art projects"
+    },
+    {
+      method: "POST", 
+      path: "/api/art", 
+      description: "Post art projects"
+    },
+    {
+      method: "PUT", 
+      path: "/api/art/:id", 
+      description: "Edit art projects"
+    },
+    {
+      method: "DELETE", 
+      path: "/api/art/:id", 
+      description: "Delete art projects"
+    },
+    ]
+  })
+});
 
 // // get all art
 // app.get('/api/art', (req, res) => {
@@ -219,7 +213,7 @@ app.get('/api/volunteer', function (req, res) {
 
 
 // API ROUTES
-// art get all da kine
+// art get all
 app.get('/api/art', (req, res) => {
   db.Art.find((err, allArts) => {
     if (err) throw err;

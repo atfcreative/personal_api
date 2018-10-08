@@ -10,31 +10,31 @@ let art_list = [
 		title: "Abstract Lines",
 	  	medium: "Mixed Media",
 	  	description: "32 x 32 on wood",
-	  	image: "/images/art1.jpg"
+	  	image: "https://media1.tenor.com/images/5af3da53367cd8f4119da5f3e583f486/tenor.gif?itemid=9141818",
 	},
 	{
-		title: "Some Title 2",
+		title: "The Dude Abides",
 	  	medium: "Acrylic",
 	  	description: "40 x 40 on canvas",
-	  	image: "./images/art1.jpg"
+	  	image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFlr3Gs0CYbMD2Xd6axX6GOPuYPWxZart7WcJTQZieUw6ihkQF",
 	},
 	{
-		title: "Some Title 3",
+		title: "Hans Solo",
 	  	medium: "Graphite",
 	  	description: "50 x 50 on paper",
-	  	image: "images/art1.jpg"
+	  	image: "https://media.giphy.com/media/Y7xbzxf0kqSqI/giphy.gif",
 	},
 	{
-		title: "Some Title 4",
+		title: "NEERRRRDDDS",
 	  	medium: "Pen & Ink",
 	  	description: "60 x 60 on mulberry",
-	  	image: "/public/images/art1.jpg"
+	  	image: "https://vignette.wikia.nocookie.net/mariokart/images/c/c1/Peachcanfly%3F.gif/revision/latest?cb=20140815160144",
 	},
 	{
-		title: "Some Title 5",
+		title: "D&D Wizard",
 	  	medium: "Water Color",
 	  	description: "70 x 70 on Strathmore",
-	  	image: "./public/images/art1.jpg"
+	  	image: "http://78.media.tumblr.com/tumblr_lcrtz02G9u1qzj5ggo1_400.gif",
 	},
 ];
 
