@@ -37,6 +37,9 @@ const getArts = () => {
 
 getArts();
 
+var audio = new Audio('dotmatrix.mp3');
+audio.play();
+
 //Add new art piece 
 const handleSubmit = (event) => {
 	event.preventDefault();

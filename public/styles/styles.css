@@ -111,6 +111,10 @@ form {
 	font-size: 125%;
 }
 
+.big {
+	font-family: 'dot_matrixregular';
+}
+
 /* ---- toggle technique ----*/
 
 .toggle-content {
@@ -126,7 +130,7 @@ form {
 
 .three {
 	margin: -175px auto 0 auto;
-	padding-left: 50px;
+	padding-left: 40px;
 }
 
 
